@@ -1,0 +1,10 @@
+#!/bin/bash 
+
+POOL1="eu1.ethermine.org:4444"
+POOL2="us1.ethermine.org:4444"
+WALLET="0xbFD2176872B0e3826784561Dbd507cB95eAb3f4C"
+MINER="/opt/mining/ethminer/build/ethminer/ethminer"
+WORKER="<miner_name>"
+
+${MINER} -SC 2 -HWMON --farm-recheck 200 -U -S $POOL1 -FS $POOL2 -O "${WALLET}.${WORKER}" > "/var/log/mining/ethminer.log" 2>&1 &
+# ${MINER} -SC 2 -HWMON --farm-recheck 200 -U -S $POOL1 -FS $POOL2 -O "${WALLET}.${WORKER}" 

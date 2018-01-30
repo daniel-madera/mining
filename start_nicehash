@@ -1,0 +1,15 @@
+#!/bin/bash 
+
+POOL1="daggerhashimoto.eu.nicehash.com:3353"
+WALLET="3BKiuXwRYgWgKnbKn8ewzUWDWmG359BuzZ"
+MINER="/opt/mining/ethminer/build/ethminer/ethminer"
+WORKER="<miner_name>"
+OPTIONS=""
+
+while true;
+do
+  ${MINER} -SP 2 -SC 2 -HWMON -U -S $POOL1 -O "${WALLET}.${WORKER}" ${OPTIONS} 2>&1 > /var/log/mining/ethminer.log
+  echo "DEAD at $(date)"
+  sleep 10;
+done
+
