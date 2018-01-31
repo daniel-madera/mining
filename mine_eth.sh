@@ -1,5 +1,10 @@
 #!/bin/bash
 
+filename=$(basename -- "$0")
+name="${filename%.*}"
+LOG="/var/log/mining/$name.log"
+exec 2>&1 | tee -a $LOG
+
 dir=$(dirname "$0")
 $dir/overclock/overclock-nvidia.sh
 
@@ -15,4 +20,4 @@ filename=$(basename -- "$0")
 name="${filename%.*}"
 LOG="/var/log/mining/$name.log"
 
-$MINER -epool $POOL1 -ewal $ETH_WALLET.$WORKER -epsw x  > $LOG 2>&1
+$MINER -epool $POOL1 -ewal $ETH_WALLET.$WORKER -epsw x
