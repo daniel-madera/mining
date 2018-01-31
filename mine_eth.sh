@@ -1,5 +1,7 @@
 #!/bin/bash
 
+./overclock/overclock-nvidia.sh
+
 # etherium mining at ethermine
 POOL1="eu1.ethermine.org:4444"
 POOL2="us1.ethermine.org:4444"

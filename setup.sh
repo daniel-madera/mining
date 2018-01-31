@@ -5,9 +5,20 @@ if [ $EUID -ne 0  ]; then
       exit 2
 fi
 
-apt install gcc build-essential linux-headers-`uname -r` \
-  dpkg-dev software-properties-comon git wget
+apt install linux-headers-`uname -r`
 service lightdm stop
+
+if [ ! -d /var/log/mining/ ]; then
+  mkdir /var/log/mining
+fi
+
+if [ ! -d /opt/mining/ ]; then
+  mkdir /opt/mining/
+fi
+
+dir=$(dirname "$0")
+
+cp $dir/* /opt/mining/ -r
 
 echo "Done..."
 echo "Install nvidia driver and Cuda toolkit."
