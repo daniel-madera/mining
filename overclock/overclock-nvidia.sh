@@ -1,6 +1,7 @@
 #!/bin/bash
+dir=$(dirname "$0")
 
-for f in nvidia-config*
+for f in $dir/nvidia-config*
 do
 	. $f
 
@@ -8,7 +9,7 @@ do
 	if [[ -z $GPU_MAX_POWER ]] ; then echo "set variable GPU_MAX_POWER" && exit 2 ; fi
 	if [[ -z $GPU_CLOCK_OFFSET ]] ; then echo "set variable GPU_CLOCK_OFFSET" && exit 2 ; fi
 	if [[ -z $GPU_FAN_SPEED ]] ; then echo "set variable GPU_FAN_SPEED" && exit 2 ; fi
-	if [[ -z $GPU_MEM_CLOCK_TRANSFER_OFFSET ]] ; then 
+	if [[ -z $GPU_MEM_CLOCK_TRANSFER_OFFSET ]] ; then
 		echo "set variable GPU_MEM_CLOCK_TRANSFER_OFFSET" && exit 2 ;
 	fi
 
@@ -19,8 +20,8 @@ do
 		exit 2
 	fi
 
-	# ssh variables 
-	export DISPLAY=:0 
+	# ssh variables
+	export DISPLAY=:0
 	export XAUTHORITY=/var/run/lightdm/root/:0
 
 	gpus_status='nvidia-smi --query-gpu=index,gpu_name,clocks.sm,clocks.mem,temperature.gpu	--format=csv | grep "${GPU_NAME_CONTAINS}" | column -s, -t'
@@ -32,6 +33,7 @@ do
 
 	echo "Found devices:"
 	eval $gpus_status
+  nvidia-xconfig -a --cool-bits=31 --allow-empty-initial-configuration
 	nvidia-smi -pm 1
 
 	for i in $(eval $gpus_status | grep ^[[:digit:]] -Eo) ; do
