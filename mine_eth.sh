@@ -14,7 +14,7 @@ POOL2="us1.ethermine.org:4444"
 ETH_WALLET="0xbFD2176872B0e3826784561Dbd507cB95eAb3f4C"
 
 WORKER=$(hostname)
-MINER="/opt/mining/claymore/ethdcrminer64"
+MINER="/opt/claymore/ethdcrminer64"
 
 filename=$(basename -- "$0")
 name="${filename%.*}"

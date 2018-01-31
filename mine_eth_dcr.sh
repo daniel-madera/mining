@@ -18,6 +18,6 @@ DCR_USER="delanroth"
 DCR_WALLET="Dsdh81D9mSDGjZ3YCwrq5iFGLfBVLHZvRmf"
 
 WORKER=$(hostname)
-MINER="/opt/mining/claymore/ethdcrminer64"
+MINER="/opt/claymore/ethdcrminer64"
 
 $MINER -epool $POOL1 -esm 1 -ewal $ETH_WALLET.$WORKER -epsw x -dpool $DCR_POOL -dwal $DCR_USER.$WORKER -dpsw x
