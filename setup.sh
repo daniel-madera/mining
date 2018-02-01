@@ -19,6 +19,8 @@ if [ ! -d /var/log/mining/ ]; then
   chown daniel:daniel /var/log/mining -R
 fi
 
+update-pciids
+
 service lightdm stop
 echo "Done..."
 echo "Install nvidia driver and Cuda toolkit."
