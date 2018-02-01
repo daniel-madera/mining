@@ -12,7 +12,7 @@ if [[ ! $DIR -ef /opt/mining ]]; then
   exit 2
 fi
 
-apt install linux-headers-`uname -r` lightdm
+apt install linux-headers-`uname -r` lightdm gcc
 
 if [ ! -d /var/log/mining/ ]; then
   mkdir /var/log/mining
