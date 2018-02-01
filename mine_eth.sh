@@ -1,7 +1,8 @@
 #!/bin/bash
 
 dir=$(dirname "$0")
-$dir/overclock/overclock-nvidia.sh
+. $dir/lock
+. $dir/overclock.sh
 
 # etherium mining at ethermine
 POOL1="eu1.ethermine.org:4444"

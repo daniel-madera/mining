@@ -1,0 +1,12 @@
+#!/bin/bash
+
+$LOCKFILE=/var/lock/mining
+
+trap "{ rm -f $LOCKFILE;  }" EXIT
+
+if [ -f $LOCKFILE ]; then
+  echo "Mining is currently running."
+  echo "Lock is active $LOCKFILE."
+  exit 2
+fi
+
