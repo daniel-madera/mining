@@ -12,6 +12,8 @@ if [[ ! $DIR -ef /opt/mining ]]; then
   exit 2
 fi
 
+apt install linux-source
+apt source linux-image-$(uname -r)
 apt install linux-headers-`uname -r` lightdm gcc cmake build-essential make
 
 if [ ! -d /var/log/mining/ ]; then
