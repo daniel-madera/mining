@@ -13,15 +13,20 @@ if [[ ! $DIR -ef /opt/mining ]]; then
 fi
 
 apt install linux-source
-apt source linux-image-$(uname -r)
-apt install linux-headers-`uname -r` lightdm gcc cmake build-essential make
+# apt source linux-image-$(uname -r)
+apt install linux-headers-$(uname -r) lightdm gcc cmake build-essential make
 
 rm ./linux* -rf
 
 update-pciids
 
+# create service
 ln -s /opt/mining/miner /etc/init.d/miner
 systemctl daemon-reload
+
+# start service on boot
+update-rc.d miner defaults
+update-rc.d miner enable
 
 echo '/usr/local/cuda/lib64' > /etc/ld.so.conf.d/cuda
 ldconfig
