@@ -27,7 +27,7 @@ do
   nvidia-xconfig -a --cool-bits=28 --allow-empty-initial-configuration
   nvidia-smi -pm 1
 
-  export DISPLAY=:1
+  export DISPLAY=:0
   export XAUTHORITY=/opt/mining/overclock/Xauthority
 
   for i in $(eval $gpus_status | grep ^[[:digit:]] -Eo) ; do
