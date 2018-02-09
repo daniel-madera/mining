@@ -14,10 +14,13 @@ do
 		exit 2
 	fi
 
-	# ssh variables
+  if [ -z "$DISPLAY" ]; then
+    export DISPLAY=:0
+  fi
 
-  export DISPLAY=:0
-	export XAUTHORITY=/var/run/lightdm/root/:0
+  if [ -z "$XAUTHORITY" ]; then
+    export export XAUTHORITY=/var/run/lightdm/root/:0
+  fi
 
 	gpus_status='nvidia-smi --query-gpu=index,gpu_name,clocks.sm,clocks.mem,temperature.gpu	--format=csv | grep "${GPU_NAME_CONTAINS}" | column -s, -t'
 
