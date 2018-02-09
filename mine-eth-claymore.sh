@@ -1,7 +1,6 @@
 #!/bin/bash
 
 dir=$(dirname "$0")
-. $dir/lock
 . $dir/overclock.sh
 
 # etherium mining at ethermine
