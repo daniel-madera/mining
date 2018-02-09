@@ -6,4 +6,3 @@ service lightdm start
 $dir/overclock/nvidia.sh
 # $dir/overclock/amd.sh
 
-service lightdm stop
