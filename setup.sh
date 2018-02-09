@@ -16,15 +16,16 @@ apt install linux-source
 apt source linux-image-$(uname -r)
 apt install linux-headers-`uname -r` lightdm gcc cmake build-essential make
 
-if [ ! -d /var/log/mining/ ]; then
-  mkdir /var/log/mining
-  chown daniel:daniel /var/log/mining -R
-fi
-
 update-pciids
+
+ln -s /opt/mining/miner /etc/init.d/miner
+systemctl daemon-reload 
+
+echo '/usr/local/cuda/lib64' > /etc/ld.so.conf.d/cuda
+ldconfig
 
 service lightdm stop
 echo "Done..."
 echo "Install nvidia driver and Cuda toolkit."
-echo "Then run command: echo '/usr/local/cuda/lib64' > /etc/ld.so.conf.d/cuda && ldconfig"
+echo "Then run command: ldconfig"
 echo "Reboot and check if service lightdm is running."
