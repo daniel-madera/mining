@@ -16,10 +16,12 @@ apt install linux-source
 apt source linux-image-$(uname -r)
 apt install linux-headers-`uname -r` lightdm gcc cmake build-essential make
 
+rm ./linux* -rf
+
 update-pciids
 
 ln -s /opt/mining/miner /etc/init.d/miner
-systemctl daemon-reload 
+systemctl daemon-reload
 
 echo '/usr/local/cuda/lib64' > /etc/ld.so.conf.d/cuda
 ldconfig
