@@ -7,7 +7,7 @@ host=$(hostname)
 if [[ $host == "it" ]]  ; then
   export DISPLAY=:1
   export XAUTHORITY=/opt/mining/overclock/xauth-gdm
-elif [[ $host == "miner*" ]] ; then
+elif [[ $host == miner* ]] ; then
   export DISPLAY=:0
   export XAUTHORITY=/opt/mining/overclock/xauth-lightdm
 fi
