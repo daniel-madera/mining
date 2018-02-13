@@ -2,6 +2,12 @@
 
 Mining service uses Claymore or Ethminer, CUDA Toolkit and NVIDIA.
 
+## Requirements
+- installed lightdm or gdm (if you prefer other DM, customize overclock/nvidia.sh for valid XAUTHORITY and DISPLAY constants.)
+- ve /opt/ethminer/ethminer
+- nebo /opt/claymore/ethdrcminer64
+
+
 ## Instructions 
 ```bash
 su
