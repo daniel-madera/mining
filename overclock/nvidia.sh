@@ -2,6 +2,16 @@
 dir=$(dirname "$0")
 host=$(hostname)
 
+# fix for ssh and using gdm or light as xserver servic
+# fix for ssh and using gdm or light as xserver servicee
+if [[ $host == "it" ]]  ; then
+  export DISPLAY=:1
+  export XAUTHORITY=/opt/mining/overclock/xauth-gdm
+elif [[ $host == "miner*" ]] ; then
+  export DISPLAY=:0
+  export XAUTHORITY=/opt/mining/overclock/xauth-lightdm
+fi
+
 for f in $dir/config/nvidia-*
 do
   . $f
@@ -26,9 +36,6 @@ do
   eval $gpus_status
   nvidia-xconfig -a --cool-bits=28 --allow-empty-initial-configuration
   nvidia-smi -pm 1
-
-  export DISPLAY=:0
-  export XAUTHORITY=/opt/mining/overclock/Xauthority
 
   for i in $(eval $gpus_status | grep ^[[:digit:]] -Eo) ; do
     echo "Overclocking device with index: $i."
